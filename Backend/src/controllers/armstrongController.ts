@@ -68,7 +68,7 @@ export const isItArmstrong = async (req: Request, res: Response) => {
 // GET users all numbers
 export const getUserArmstrongNumbers = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const id  = req.user?.id
 
     const armstrongNumbers = await prisma.armstrongNumber.findMany({
       where: { userId: id },
