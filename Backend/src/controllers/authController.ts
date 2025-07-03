@@ -6,6 +6,7 @@ import { JWT_SECRET } from "../utils/Config";
 
 const prisma = new PrismaClient();
 
+// User Signup
 export const signup = async (req: Request, res: Response) => {
   const { email, password, firstName, lastName } = req.body;
 

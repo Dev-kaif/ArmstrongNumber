@@ -3,6 +3,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+// gloabal route to fetch all user and thier data
 export const getAllUserData = async (req: Request, res: Response) => {
   try {
     const page = parseInt(req.query.page as string) || 1;
