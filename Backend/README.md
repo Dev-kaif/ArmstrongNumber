@@ -83,8 +83,8 @@ A **TypeScript + Prisma + Express** backend for **Armstrong Number Verification 
 1️⃣ **Clone the repository**:
 
 ```bash
-git clone <repo_url>
-cd <repo_folder>
+git clone git@github.com:Dev-kaif/ArmstrongNumber.git
+cd ArmstrongNumber
 ```
 
 2️⃣ **Install dependencies**:
@@ -148,22 +148,14 @@ Server will start on **`http://localhost:3000`**.
 
 ### **Global User Data** (`/api/global`)
 
-✅ Got it. If you **want a cleaner, minimal phrasing without numbers**, use:
-
----
-
-### **🌐 Global User Data** (`/api/global`)
 
 * `POST /allUserData` – Fetch all users with their Armstrong numbers, supports pagination.
 
----
 
 #### **Query Parameters:**
 
 * `page` : Page number for pagination.
 * `limit` : Number of users per page.
-
----
 
 
 #### **Example:**
