@@ -144,11 +144,33 @@ Server will start on **`http://localhost:3000`**.
 ### **Armstrong Verification** (`/api/armStrong`)
 
 - `POST /verify` – Verify number (protected)
-- `GET /number/:id` – Get user’s Armstrong numbers (protected)
+- `GET /number` – Get user’s Armstrong numbers (protected)
 
 ### **Global User Data** (`/api/global`)
 
-- `POST /allUserData` – Fetch all users with Armstrong numbers (supports pagination)
+✅ Got it. If you **want a cleaner, minimal phrasing without numbers**, use:
+
+---
+
+### **🌐 Global User Data** (`/api/global`)
+
+* `POST /allUserData` – Fetch all users with their Armstrong numbers, supports pagination.
+
+---
+
+#### **Query Parameters:**
+
+* `page` : Page number for pagination.
+* `limit` : Number of users per page.
+
+---
+
+
+#### **Example:**
+
+```
+POST http://localhost:3000/api/global/allUserData?page=1&limit=10
+```
 
 ---
 
@@ -159,6 +181,8 @@ Server will start on **`http://localhost:3000`**.
 - `id`: UUID
 - `email`: String (unique)
 - `name`: String
+- `password`:String
+- `createdAt`:DateTime
 - `armstrongs`: Relation to ArmstrongNumber
 
 **ArmstrongNumber:**
@@ -167,6 +191,7 @@ Server will start on **`http://localhost:3000`**.
 - `number`: Integer
 - `userId`: FK to User
 - `user`: Relation to User
+- `createdAt`:DateTime
 
 ---
 
