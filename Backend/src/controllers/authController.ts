@@ -8,9 +8,9 @@ const prisma = new PrismaClient();
 
 // User Signup
 export const signup = async (req: Request, res: Response) => {
-  const { email, password, firstName, lastName } = req.body;
+  const { email, password, name } = req.body;
 
-  if (!email || !password) {
+  if (!email || !password || !name) {
     res.status(400).json({ message: "Email and password are required." });
     return;
   }
@@ -30,9 +30,8 @@ export const signup = async (req: Request, res: Response) => {
     const newUser = await prisma.user.create({
       data: {
         email: email,
-        passwordHash: hashedPassword,
-        firstName: firstName,
-        lastName: lastName,
+        password: hashedPassword,
+        name
       },
     });
 
@@ -69,12 +68,12 @@ export const login = async (req: Request, res: Response) => {
       where: { email },
     });
 
-    if (!user || !user.passwordHash) {
+    if (!user || !user.password) {
       res.status(401).json({ message: "Invalid credentials." });
       return;
     }
 
-    const passwordMatch = await bcrypt.compare(password, user.passwordHash);
+    const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (!passwordMatch) {
       res.status(401).json({ message: "Invalid credentials." });

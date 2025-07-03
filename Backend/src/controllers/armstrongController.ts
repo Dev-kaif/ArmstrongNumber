@@ -54,7 +54,7 @@ export const isItArmstrong = async (req: Request, res: Response) => {
         : "The number is not an Armstrong number.",
     });
     return;
-  } catch (error) {
+  } catch (error:any) {
     console.error(" error:", error);
     res.status(500).json({
       message: "Internal server error",
@@ -76,7 +76,7 @@ export const getUserArmstrongNumbers = async (req: Request, res: Response) => {
 
     res.status(200).json(armstrongNumbers);
     return;
-  } catch (error) {
+  } catch (error:any) {
     console.error("getUserArmstrongNumbers error:", error);
     res.status(500).json({
       message: "Internal server error",
