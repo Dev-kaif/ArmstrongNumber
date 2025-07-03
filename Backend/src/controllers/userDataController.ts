@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
+import { User } from "../generated/prisma/index";
 
 const prisma = new PrismaClient();
 
@@ -15,7 +16,11 @@ export const getAllUserData = async (req: Request, res: Response) => {
     const users = await prisma.user.findMany({
       skip,
       take: limit,
-      include: {
+      select: {
+        id: true,
+        email: true,
+        name: true,
+        createdAt: true,
         armstrongs: {
           select: {
             id: true,

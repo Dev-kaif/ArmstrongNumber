@@ -13,7 +13,8 @@ function isArmstrong(num: number): boolean {
 // Check if its armstrong number or not
 export const isItArmstrong = async (req: Request, res: Response) => {
   try {
-    const { userId, number } = req.body;
+    const { number } = req.body;
+    const userId = req.user?.id as string;
 
     if (
       number === undefined ||
