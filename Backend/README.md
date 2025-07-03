@@ -2,6 +2,7 @@
 
 A **TypeScript + Prisma + Express** backend for **Armstrong Number Verification and User Management**, designed with **clean architecture and JWT authentication**.
 
+
 ---
 
 ## 📂 **Project Structure**
@@ -43,16 +44,25 @@ A **TypeScript + Prisma + Express** backend for **Armstrong Number Verification 
 
 ---
 
+
 ## 🛠️ **Features**
 
 ✅ **User Registration & Login** (JWT-based)
+
 ✅ **Verify Armstrong Numbers**, save if true
+
 ✅ **Fetch a user's Armstrong numbers**
+
 ✅ **Global dashboard**: Fetch all users with their Armstrong numbers (with pagination)
+
 ✅ **Protected routes** with JWT middleware
+
 ✅ **PostgreSQL** database via Prisma ORM
+
 ✅ **TypeScript for type safety**
+
 ✅ **Prettier + ESLint for code consistency**
+
 
 ---
 
@@ -120,7 +130,9 @@ npm run dev
 
 Server will start on **`http://localhost:3000`**.
 
+
 ---
+
 
 ## 🛡️ **API Endpoints**
 
