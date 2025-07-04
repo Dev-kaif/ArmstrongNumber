@@ -7,6 +7,7 @@ import { cn } from "./lib/utils";
 import Dashboard from "./components/Dashboard/Dashboard";
 import ProtectedRoute from "./components/Auth/ProtectedRoute";
 import LandingPage from "./components/Dashboard/Landing";
+import NotFound404 from "./components/MagicUi/404";
 
 export function App() {
   return (
@@ -29,14 +30,7 @@ export function App() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="*"
-          element={
-            <div className="text-7xl flex justify-center items-center h-screen">
-              404 Not Found
-            </div>
-          }
-        />
+        <Route path="*" element={<NotFound404 />} />
       </Routes>
 
       <Toaster />
