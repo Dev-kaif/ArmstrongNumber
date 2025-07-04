@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client";
-
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import {

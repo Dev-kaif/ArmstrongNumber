@@ -1,69 +1,133 @@
-# React + TypeScript + Vite
+# 🚀 Armstrong Checker Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **clean, minimal SaaS-style frontend** for **Armstrong Number Checker**, built with:
 
-Currently, two official plugins are available:
+* ⚡ **Vite** + **React** + **TypeScript**
+* 🌿 **Tailwind CSS** + **shadcn/ui** for clean components
+* 🔔 **Sonner** for beautiful toast notifications
+* 📡 **Axios** for API requests
+* ✅ Authentication with JWT & protected routes
+* 📈 Dashboard to **check Armstrong numbers**
+* 📜 Paginated history with **global/user views**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+✅ **Minimal Landing Page** with CTA to Login
+✅ **Signup & Login with password validation & visibility toggle**
+✅ **Protected Dashboard** with logout functionality
+✅ **Armstrong Number Checker** with success/error toasts
+✅ **Paginated History Table** with:
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* Toggle between **User History** and **Global History**
+* Pagination for global and user histories
+  ✅ **Axios instance** with JWT token header injection
+  ✅ **Modern UI with gradients and micro-interactions**
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🛠️ Tech Stack
+
+* **Vite** – Fast bundler and dev environment
+* **React + TypeScript** – Strongly typed component architecture
+* **Tailwind CSS** – Utility-first styling
+* **shadcn/ui** – Accessible, composable UI primitives
+* **Sonner** – Fast toast notifications
+* **Axios** – API requests with interceptors
+* **Prisma Backend** (connected via REST API)
+* **JWT Auth** for session management
+
+---
+
+## ⚙️ Setup Instructions
+
+1️⃣ **Clone the repo**
+
+```bash
+git clone <repo_url>
+cd <project_folder>
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2️⃣ **Install dependencies**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+3️⃣ **Setup Environment Variables**
+
+Create a `.env` file in the root:
+
+```env
+VITE_BACKEND_URL=http://localhost:3000
+```
+
+4️⃣ **Run the project**
+
+```bash
+npm run dev
+```
+
+Your frontend will be live at:
+
+```
+http://localhost:5173
+```
+
+---
+
+## 🗂️ Project Structure
+
+```
+src/
+ ├── components/
+ │    ├── Auth/           # Login, Signup components
+ │    ├── Dashboard/      # Dashboard, History, Checker components
+ │    ├── MagicUi/        # MagicCard, DotPattern for aesthetic
+ │    └── ui/             # Button, Card, Table, etc. (shadcn)
+ │
+ ├── lib/
+ │    ├── axiosInstance.ts  # Axios with JWT token header
+ │    └── utils.ts          # Utility helpers
+ │
+ ├── App.tsx              # Entry point with routes
+ └── main.tsx             # Vite main entry
+```
+
+---
+
+## 🚀 Deployment
+
+You can deploy easily to:
+
+* **Vercel**
+* **Netlify**
+* **Cloudflare Pages**
+
+**✅ Vercel Example:**
+
+* Push to GitHub
+* Import to Vercel
+* Add `VITE_BACKEND_URL` in Vercel environment variables
+* Deploy
+
+---
+
+## 🧩 API Endpoints Expected
+
+* `POST /api/auth/login` – Login
+* `POST /api/auth/signup` – Signup
+* `POST /api/armStrong/check` – Check Armstrong Number
+* `GET /api/armStrong/number` – Get user's Armstrong numbers (paginated)
+* `POST /api/global/allUserData?page=1&limit=10` – Get global Armstrong numbers with pagination
+
+---
+
+## 🎨 Customization
+
+* Adjust primary/secondary colors in `tailwind.config.ts` or `globals.css`.
+* Adjust gradient, shadows, and animations in `MagicCard` and `DotPattern` for brand alignment.
+* Update logos/text for your product branding.
+
+---
