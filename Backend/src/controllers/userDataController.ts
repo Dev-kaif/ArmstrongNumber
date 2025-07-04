@@ -12,33 +12,31 @@ export const getAllUserData = async (req: Request, res: Response) => {
     // prisma will skip that many
     const skip = (page - 1) * limit;
 
-    const users = await prisma.user.findMany({
+    const armstrongNumbers = await prisma.armstrongNumber.findMany({
       skip,
       take: limit,
-      select: {
-        id: true,
-        email: true,
-        name: true,
-        createdAt: true,
-        armstrongs: {
+      include: {
+        user: {
           select: {
             id: true,
-            number: true,
-            createdAt: true,
+            email: true,
+            name: true,
           },
         },
       },
-      orderBy: { createdAt: "desc" },
+      orderBy: {
+        createdAt: "desc",
+      },
     });
 
-    const totalUsers = await prisma.user.count();
+    const totalArmstrongNumbers = await prisma.armstrongNumber.count();
 
     res.status(200).json({
       page,
       limit,
-      totalUsers,
-      totalPages: Math.ceil(totalUsers / limit),
-      users,
+      totalArmstrongNumbers,
+      totalPages: Math.ceil(totalArmstrongNumbers / limit),
+      armstrongNumbers,
     });
     return;
   } catch (error) {

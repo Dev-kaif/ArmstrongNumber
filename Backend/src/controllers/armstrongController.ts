@@ -70,7 +70,7 @@ export const isItArmstrong = async (req: Request, res: Response) => {
         : "The number is not an Armstrong number.",
     });
     return;
-  } catch (error:any) {
+  } catch (error: any) {
     console.error(" error:", error);
     res.status(500).json({
       message: "Internal server error",
@@ -83,16 +83,34 @@ export const isItArmstrong = async (req: Request, res: Response) => {
 // GET users all numbers
 export const getUserArmstrongNumbers = async (req: Request, res: Response) => {
   try {
-    const id  = req.user?.id
+    const id = req.user?.id;
+
+    const page = parseInt(req.query.page as string) || 1;
+    const limit = parseInt(req.query.limit as string) || 10;
+    const skip = (page - 1) * limit;
+
+    const totalCount = await prisma.armstrongNumber.count({
+      where: { userId: id },
+    });
+
+    const totalPages = Math.ceil(totalCount / limit);
 
     const armstrongNumbers = await prisma.armstrongNumber.findMany({
       where: { userId: id },
       orderBy: { createdAt: "desc" },
+      skip,
+      take: limit,
     });
 
-    res.status(200).json(armstrongNumbers);
+    res.status(200).json({
+      page,
+      limit,
+      totalCount,
+      totalPages,
+      armstrongNumbers,
+    });
     return;
-  } catch (error:any) {
+  } catch (error: any) {
     console.error("getUserArmstrongNumbers error:", error);
     res.status(500).json({
       message: "Internal server error",
