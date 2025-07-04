@@ -2,13 +2,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ArmStrongCheker from "./ArmStrongCheker";
+import History from "./History";
 
 function Dashboard() {
   const [refreshHistory, setRefreshHistory] = useState(false);
   const navigate = useNavigate();
 
   const handleSuccess = () => {
-    setRefreshHistory((prev) => !prev);
+    setRefreshHistory((prev) => !prev); 
   };
 
   const handleLogout = () => {
@@ -29,6 +30,7 @@ function Dashboard() {
       </div>
 
       <ArmStrongCheker onSuccess={handleSuccess} />
+      <History refresh={refreshHistory} />
     </div>
   );
 }
