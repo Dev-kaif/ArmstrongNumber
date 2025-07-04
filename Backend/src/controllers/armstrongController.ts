@@ -6,7 +6,10 @@ const prisma = new PrismaClient();
 function isArmstrong(num: number): boolean {
   const digits = num.toString().split("");
   const power = digits.length;
-  const sum = digits.reduce((acc, digit) => acc + Math.pow(Number(digit), power),0);
+  const sum = digits.reduce(
+    (acc, digit) => acc + Math.pow(Number(digit), power),
+    0
+  );
   return sum === num;
 }
 
@@ -40,12 +43,24 @@ export const isItArmstrong = async (req: Request, res: Response) => {
     const result = isArmstrong(number);
 
     if (result) {
-      await prisma.armstrongNumber.create({
-        data: {
-          number,
-          userId,
+      // Checks if user already has that number to reduce duplications
+      const existing = await prisma.armstrongNumber.findUnique({
+        where: {
+          number_userId: {
+            number,
+            userId,
+          },
         },
       });
+
+      if (!existing) {
+        await prisma.armstrongNumber.create({
+          data: {
+            number,
+            userId,
+          },
+        });
+      }
     }
 
     res.status(200).json({
