@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 import ArmStrongCheker from "./ArmStrongCheker";
 import History from "./History";
+import TopButton from "../MagicUi/TopButton";
 
 function Dashboard() {
   const [refreshHistory, setRefreshHistory] = useState(false);
@@ -19,16 +19,7 @@ function Dashboard() {
 
   return (
     <div className="min-h-screen w-full flex flex-col gap-10 justify-center items-center px-4 py-20">
-      <div className="w-full max-w-7xl flex justify-end">
-        <Button
-          variant="outline"
-          onClick={handleLogout}
-          className="w-fit"
-        >
-          Logout
-        </Button>
-      </div>
-
+      <TopButton text="Logout" handleFunction={handleLogout}/>
       <ArmStrongCheker onSuccess={handleSuccess} />
       <History refresh={refreshHistory} />
     </div>

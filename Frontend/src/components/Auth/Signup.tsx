@@ -17,6 +17,7 @@ import { toast } from "sonner";
 import { Eye, EyeOff } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { BACKEND_URL } from "@/lib/Config";
+import TopButton from "../MagicUi/TopButton";
 
 export function Signup() {
   const navigate = useNavigate();
@@ -54,7 +55,7 @@ export function Signup() {
       toast.success("Signup successful! Redirecting...");
 
       localStorage.setItem("token", data.token);
-      
+
       setTimeout(() => {
         navigate("/dashboard");
       }, 1000);
@@ -73,6 +74,9 @@ export function Signup() {
 
   return (
     <div className="min-h-screen w-full flex justify-center items-center px-4">
+      <TopButton text="Back to Home" handleFunction={()=>{
+        navigate('/')
+      }}/>
       <Card className="p-0 max-w-sm w-full shadow-none border-none">
         <MagicCard gradientColor="#D9D9D955" className="p-0">
           <CardHeader className="border-b border-border p-4">
