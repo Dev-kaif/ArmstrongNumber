@@ -4,6 +4,8 @@ import { Signup } from "./components/Auth/Signup";
 import { DotPattern } from "./components/MagicUi/Backgroud";
 import { Toaster } from "./components/ui/sonner";
 import { cn } from "./lib/utils";
+import Dashboard from "./components/Dashboard/Dashboard";
+import ProtectedRoute from "./components/Auth/ProtectedRoute";
 
 export function App() {
   return (
@@ -17,6 +19,14 @@ export function App() {
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
 
       <Toaster />
