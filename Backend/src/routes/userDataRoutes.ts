@@ -3,6 +3,6 @@ import { getAllUserData } from '../controllers/userDataController';
 
 const router = Router();
 
-router.post('/allUserData', getAllUserData);
+router.get('/allUserData', getAllUserData);
 
 export default router;
