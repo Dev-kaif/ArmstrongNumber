@@ -17,6 +17,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
+import { BACKEND_URL } from "@/lib/Config";
 
 export function Login() {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ export function Login() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/login",
+        `${BACKEND_URL}/api/auth/login`,
         { email, password },
         { headers: { "Content-Type": "application/json" } }
       );

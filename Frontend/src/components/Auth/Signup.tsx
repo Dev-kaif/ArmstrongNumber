@@ -16,6 +16,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Eye, EyeOff } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { BACKEND_URL } from "@/lib/Config";
 
 export function Signup() {
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ export function Signup() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/signup",
+        `${BACKEND_URL}/api/auth/signup`,
         { email, password, name },
         { headers: { "Content-Type": "application/json" } }
       );
