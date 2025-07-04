@@ -1,8 +1,26 @@
 import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function LandingPage() {
   const navigate = useNavigate();
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token") as string;
+
+    if (token) {
+      setToken(token);
+    }
+  }, []);
+
+  const handleNavigation = () => {
+    if (token) {
+      navigate("/dashboard");
+    } else {
+      navigate("/login");
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-background px-4">
@@ -15,14 +33,15 @@ function LandingPage() {
           Effortlessly
         </h1>
         <p className="text-muted-foreground text-lg max-w-md mx-auto">
-          A minimal, intuitive platform to verify Armstrong numbers and learn number theory interactively.
+          A minimal, intuitive platform to verify Armstrong numbers and learn
+          number theory interactively.
         </p>
         <Button
           size="lg"
           className="mt-4"
-          onClick={() => navigate("/login")}
+          onClick={handleNavigation}
         >
-          Get Started
+          {token ? "Continue to Dashboard" : "Get Started"}
         </Button>
       </div>
     </div>
