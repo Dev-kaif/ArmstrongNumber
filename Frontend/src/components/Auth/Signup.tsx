@@ -52,9 +52,13 @@ export function Signup() {
       const data = response.data;
 
       toast.success("Signup successful! Redirecting...");
-      console.log("Token:", data.token);
 
       localStorage.setItem("token", data.token);
+      
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 1000);
+
     } catch (err: any) {
       console.error(err);
       if (err.response && err.response.data && err.response.data.message) {

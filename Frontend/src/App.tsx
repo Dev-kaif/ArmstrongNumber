@@ -29,6 +29,14 @@ export function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="*"
+          element={
+            <div className="text-7xl flex justify-center items-center h-screen">
+              404 Not Found
+            </div>
+          }
+        />
       </Routes>
 
       <Toaster />
