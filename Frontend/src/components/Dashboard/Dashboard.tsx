@@ -18,7 +18,7 @@ function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col gap-10 justify-center items-center px-4">
+    <div className="min-h-screen w-full flex flex-col gap-10 justify-center items-center px-4 py-20">
       <div className="w-full max-w-7xl flex justify-end">
         <Button
           variant="outline"
