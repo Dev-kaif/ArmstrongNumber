@@ -3,6 +3,7 @@
 A **full-stack project** to check and track **Armstrong numbers** with:
 
 ✨ **Backend:** Node.js + Express + Prisma + PostgreSQL
+
 ✨ **Frontend:** Vite + React + TypeScript + Tailwind + shadcn/ui
 
 ---
